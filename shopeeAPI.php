@@ -135,6 +135,31 @@ class shopeeAPI{
 	}
 
 	/*
+	*	update stock price 
+	*	@item_id product id of shopee system record
+	*	@price pricing of the item_id to be updated
+	*
+	*/
+	function updateItemPrice($item_id, $price){
+
+		$updatePriceUrl = $this->shopeeUrl.'/items/update_price';
+		
+		if(strlen($item_id)==0)
+			throw new Exception('item_id is required');
+
+		if(strlen($price)==0)
+			throw new Exception('price is required');	
+
+		$attributes = array('item_id' => intval($item_id), 'price'=>floatval($price));
+
+		$this->authorizationKey = $this->generateAuthotentication($updatePriceUrl, $attributes);
+
+		$response = $this->curlPost($updatePriceUrl);
+
+		return $response;					
+	}
+
+	/*
 	*	curl to API target to retrieve DATA
 	*	@url refers to the target URL
 	*/
