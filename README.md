@@ -19,3 +19,10 @@ $shopee = new shopeeAPIOrder($shopeeShopId, $shopeePartnerId, $shopeeSecretKey, 
 $ordersList = $shopee->getOrderList(null);<br/>
 $ordersListJSON = json_decode($ordersList, true);<br/>
 //returns orderList in JSON with attributes "ordersn", "order_status", "order_datetime"<br/>
+
+//4. retrieve order Details<br/>
+$shopee = new shopeeAPIOrder($shopeeShopId, $shopeePartnerId, $shopeeSecretKey, $shopeeUrl);<br/>
+$ordersn[] = array(123, 456, 789);<br/>
+$ordersList = $shopee->getOrderDetail($ordersn);<br/>
+$ordersListJON = json_decode($ordersList, true);<br/>
+//returns to you order Detail like recipient info., items ordered, status of order, etc.
