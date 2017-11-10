@@ -18,7 +18,7 @@ $shopee->updateItemStock($item_id, $qty);<br/>
 $shopee = new shopeeAPIOrder($shopeeShopId, $shopeePartnerId, $shopeeSecretKey, $shopeeUrl);<br/>
 $ordersList = $shopee->getOrderList(null);<br/>
 $ordersListJSON = json_decode($ordersList, true);<br/>
-//returns orderList in JSON with attributes "ordersn", "order_status", "order_datetime"<br/>
+//returns orderList in JSON with attributes "ordersn", "order_status", "order_datetime"<br/><br/>
 
 //4. retrieve order Details<br/>
 $shopee = new shopeeAPIOrder($shopeeShopId, $shopeePartnerId, $shopeeSecretKey, $shopeeUrl);<br/>
