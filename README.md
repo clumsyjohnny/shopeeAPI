@@ -13,3 +13,9 @@ $qty = 100; #{quantity of the shopee porudcts}<br/>
 $shopee = new shopeeAPI($shopeeShopId, $shopeePartnerId, $shopeeSecretKey, $shopeeUrl);<br/>
 $shopee->updateItemStock($item_id, $qty);<br/>
 //when successfully updated it will show u modified time and item_id in JSON format<br/><Br/>
+
+//3. retrieve order list
+$shopee = new shopeeAPIOrder($shopeeShopId, $shopeePartnerId, $shopeeSecretKey, $shopeeUrl);
+$ordersList = $shopee->getOrderList(null);
+$ordersListJSON = json_decode($ordersList, true);
+//returns orderList in JSON with attributes "ordersn", "order_status", "order_datetime"
