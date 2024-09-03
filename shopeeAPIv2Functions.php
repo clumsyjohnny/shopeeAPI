@@ -127,6 +127,7 @@
 		$output 			= shopeeV2CurlPost($model_url3);
 		return $output;				
 	}
+	//use this function to generate link to authorize shopee shop login
 	function shopeeV2GenerateAuthorizationUrl($return_url, $shopee, $auth_url='/shop/auth_partner'){
 
 		global $local_debug;
@@ -139,6 +140,8 @@
 			print '<hr/>common.php line 53: auth_link: <input type="text" value="'.$authlink.'"/>';
 		return $authlink;
 	}
+
+	//use this function to generate signature based on requirement at https://open.shopee.com/developer-guide/16
 	function shopeev2GetSignAccountLvl1($shopee, $api_path, $level=1){
 		global $local_debug;
 		if($level==1)
@@ -150,6 +153,8 @@
 		$sign	= hash_hmac('sha256', $sign, $shopee['secret']);
 		return $sign;
 	}
+
+	//this is the heart of the API, curl to shopee api and get response back.
 	function shopeeV2CurlPost($url, $dataPost = null){
 		global $local_debug;
 		$curl = curl_init();
@@ -172,27 +177,27 @@
 			}
 
 			curl_setopt_array($curl, array(
-			  CURLOPT_URL => $url,
+			  CURLOPT_URL 			=> $url,
 			  CURLOPT_RETURNTRANSFER 	=> true,
-			  CURLOPT_ENCODING 			=> "",
+			  CURLOPT_ENCODING 		=> "",
 			  CURLOPT_MAXREDIRS 		=> 10,
-			  CURLOPT_TIMEOUT 			=> 0,
+			  CURLOPT_TIMEOUT 		=> 0,
 			  CURLOPT_HTTP_VERSION 		=> CURL_HTTP_VERSION_1_1,
 			  CURLOPT_CUSTOMREQUEST 	=> "POST",
 			  CURLOPT_POSTFIELDS 		=> $dp,
-			  CURLOPT_HTTPHEADER => array(
+			  CURLOPT_HTTPHEADER 		=> array(
 			    "content-type: $ct"
 			  )			  
 			));		
 		}else{
 			curl_setopt_array($curl, array(
-			  CURLOPT_URL => $url,
+			  CURLOPT_URL 			=> $url,
 			  CURLOPT_RETURNTRANSFER 	=> true,
-			  CURLOPT_ENCODING 			=> "",
+			  CURLOPT_ENCODING 		=> "",
 			  CURLOPT_MAXREDIRS 		=> 10,
-			  CURLOPT_TIMEOUT 			=> 30,
+			  CURLOPT_TIMEOUT 		=> 30,
 			  CURLOPT_HTTP_VERSION 		=> CURL_HTTP_VERSION_1_1,
-			  CURLOPT_HTTPHEADER => array(
+			  CURLOPT_HTTPHEADER 		=> array(
 			    "content-type: application/json"
 			  )			  
 			));				
@@ -208,6 +213,8 @@
 
 		return $response;
 	}	
+
+	//after user successfully authorize the shop for the API, the code will return for developer to get access_token based on code.
 	function shopeev2GetAccessToken($code, $shopee, $token_url='/auth/token/get'){
 
 		$ts 				= $shopee['ts'];
@@ -217,18 +224,18 @@
 		$sign				= shopeev2GetSignAccountLvl1($shopee, $token_url2);
 
 		$commonquery 		= Array(
-			'sign'			=>	$sign,
+			'sign'		=>	$sign,
 
 			'partner_id'	=>	$shopee['partner_id'],
 
-			'timestamp'		=> 	$shopee['ts']
+			'timestamp'	=> 	$shopee['ts']
 		);
 
 		$datapost 			= Array(
 
 			'code'			=>	$code, 
 
-			'partner_id'	=>	$shopee['partner_id'],
+			'partner_id'		=>	$shopee['partner_id'],
 
 			'shop_id'		=>	$shopee['shop_id']
 		);
@@ -239,6 +246,8 @@
 		return $output;
 		
 	}
+
+	//this function returns shop information
 	function shopeev2GetShopeInfo($token, $shopee, $shopurl = '/shop/get_shop_info'){
 		global $local_debug;
 
@@ -268,6 +277,8 @@
 
 		return $response;		
 	}
+
+	//this functions return logistics data for posting products
 	function shopeeV2GetLogistics($token, $shopee, $shipping_url = '/logistics/get_channel_list'){
 
 			$ts 				= $shopee['ts'];
@@ -309,13 +320,11 @@
 
 				'partner_id'	=>	$shopee['partner_id'],
 
-				'shop_id'		=> 	$shopee['shop_id'],
+				'shop_id'	=> 	$shopee['shop_id'],
 
-				'sign'			=>	$sign,
-		
+				'sign'		=>	$sign,
 
-				'timestamp'		=> 	$ts
-				
+				'timestamp'	=> 	$ts
 			);
 
 			$dataBPost 			= Array(
