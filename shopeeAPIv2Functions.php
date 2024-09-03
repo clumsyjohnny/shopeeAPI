@@ -1,29 +1,28 @@
 <?php 
-	#https://seller.test-stable.shopee.com.my/account/signin?next=%2F
-		$shopeeAcc 			= ''; #shopee seller profile username
-
-		$shopPass 			= ''; 
-
-		$shopeeShopId 		= ''; #shopee shop ID
-
-		$shopeePartnerId 	= ''; #shopee open api partner ID
-
-		$shopeeSecretKey 	= '4a504874507371786b6e6b4a716d694d6e4773565252477644524d734b494c4d';
-
-		$shopeeUrl 			= 'https://partner.shopeemobile.com/api/v2';
-
-		$shopee_token_file	= 'shopee_test_tokenv2';
-
-	  $ShopeeDate 		= new DateTime();
-
-	  $shopeeTimestamp 	= $ShopeeDate->getTimestamp();
-
+	$shopeeAcc 			= ''; #shopee seller profile username
+	
+	$shopPass 			= ''; 
+	
+	$shopeeShopId 		= ''; #shopee shop ID
+	
+	$shopeePartnerId 	= ''; #shopee open api partner ID
+	
+	$shopeeSecretKey 	= '4a504874507371786b6e6b4a716d694d6e4773565252477644524d734b494c4d';
+	
+	$shopeeUrl 			= 'https://partner.shopeemobile.com/api/v2';
+	
+	$shopee_token_file	= 'shopee_test_tokenv2';
+	
+	$ShopeeDate 		= new DateTime();
+	
+	$shopeeTimestamp 	= $ShopeeDate->getTimestamp();
+	
 	$shopee_base 		= Array(
-		'shop_id'		=>	$shopeeShopId, 
-		'partner_id'	=>	$shopeePartnerId, 
-		'secret'		=>	$shopeeSecretKey, 
-		'url'			=> 	$shopeeUrl,
-		'ts'			=>	$shopeeTimestamp
+	'shop_id'		=>	$shopeeShopId, 
+	'partner_id'		=>	$shopeePartnerId, 
+	'secret'		=>	$shopeeSecretKey, 
+	'url'			=> 	$shopeeUrl,
+	'ts'			=>	$shopeeTimestamp
 	);	
 
 	$shopee_order_param = Array(
