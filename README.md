@@ -1,3 +1,6 @@
+# shopee API V2.0
+2024-08-24 update the code to accomodate version 2 of SHOPEE open API.
+
 # shopeeAPI
 wrote the code for shopeeAPI using PHP and hope somebody might find it useful.
 
