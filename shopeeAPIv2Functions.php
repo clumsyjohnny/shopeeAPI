@@ -28,10 +28,6 @@
 	$shopee_order_param = Array(
 		'time_range_field'		=>	'create_time',
 		'page_size'				=>	100
-		#'cursor'				=>	
-		#'order_status'			=>	
-		#'time_from'			=>
-		#'time_to'				=>
 	);
 	if(isset($shopee_express_shipping_value) && strlen($shopee_express_shipping_value)>0){
 		$tmp_express_val = explode("\n", $shopee_express_shipping_value);
@@ -53,6 +49,7 @@
 			'same day delivery'
 		);
 	}
+	//use this function to get a single comment based on commentid
 	function shopeeV2GetCommentOnID($token, $shopee, $commentid, $comment_url = '/product/get_comment'){
 		global $local_debug;
 		$ts 				= $shopee['ts'];
@@ -92,6 +89,7 @@
 		$output 			= shopeeV2CurlPost($model_url3);
 		return $output;				
 	}
+	//use this function to get a comment lists
 	function shopeeV2GetProductComment($token, $shopee, $page_size=10, $item_id=null, $cursor='', $comment_url = '/product/get_comment'){
 		global $local_debug;
 		$ts 				= $shopee['ts'];
