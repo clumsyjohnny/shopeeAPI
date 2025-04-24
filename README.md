@@ -1,3 +1,6 @@
+#shopee API v2.1
+2025-08-24 update the code to accomodate version 2 of SHOPEE open API, and document the code better.
+
 # shopee API V2.0
 2024-08-24 update the code to accomodate version 2 of SHOPEE open API.
 
