@@ -110,7 +110,7 @@ class ShopeeApiClient
             $baseString .= http_build_query($params);
         }
         
-        if($this->config['is_sandbox']==true){
+        if($this->debug){
             // DEBUG OUTPUT - REMOVE AFTER VERIFICATION
             echo "<br/>String being signed: " . $baseString . "\n";
             echo "Secret key: " . $this->config['secret_key'] . "\n";
