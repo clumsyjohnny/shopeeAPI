@@ -1,8 +1,9 @@
-# shopee API v2.1
-2025-08-24 update(refactor) the code to accomodate version 2 of SHOPEE open API, and document the code better.
-1. getauthUrl_example.php added example how to use the shopee shop API. <YOURWEBSITE> ===>> <SHOPEE_SHOP_URL> ====>> <OEPN_SHOPEE_URL> ====>> <YOURWEBSITE?code=somecode> 
+# shopee API V2.2
+2025-04-24 update(refactor) the code to accomodate version 2 of SHOPEE open API, and document the code better.
+1. getauthUrl_example.php added example how to use the shopee shop API. 
+2. getshop_example.php added example how to use the shopee get shop API to return your shop information.
 
-p/s: you may contact me if you need me to troubleshoot the code jeep1188@gmail.com
+p/s: you may contact me if you need me to troubleshoot the code jeep1188@gmail.com /  [whatsapp me](https://wa.me/60128838617?text=hello%2C%20i%20get%20your%20code%20from%20github%20for%20shopee%20api)
 
 # shopee API V2.0
 2024-08-24 update the code to accomodate version 2 of SHOPEE open API.
