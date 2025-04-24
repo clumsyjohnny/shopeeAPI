@@ -109,11 +109,15 @@ class ShopeeApiClient
             ksort($params); // Parameters must be sorted by key
             $baseString .= http_build_query($params);
         }
-        // DEBUG OUTPUT - REMOVE AFTER VERIFICATION
-        echo "<br/>String being signed: " . $baseString . "\n";
-        echo "Secret key: " . $this->config['secret_key'] . "\n";
-        echo "Generated signature: " . hash_hmac('sha256', $baseString, $this->config['secret_key']) . "\n";
+        
+        if($this->config['is_sandbox']==true){
+            // DEBUG OUTPUT - REMOVE AFTER VERIFICATION
+            echo "<br/>String being signed: " . $baseString . "\n";
+            echo "Secret key: " . $this->config['secret_key'] . "\n";
+            echo "Generated signature: " . hash_hmac('sha256', $baseString, $this->config['secret_key']) . "\n";
+        }
         return hash_hmac('sha256', $baseString, $this->config['secret_key']);
+        
     }
     
     /**
